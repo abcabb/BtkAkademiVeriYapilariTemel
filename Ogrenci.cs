@@ -19,10 +19,10 @@
 
             public override string ToString()
             {
-                return $"İsim : {this.ogr_isim},20" +
-                    $"Soyisim : {this.ogr_soyisim}" +
-                    $"Cinsiyet : {this.ogr_cinsiyet}" +
-                    $"Numara : {this.ogr_no}";
+                return $"İsim : {this.ogr_isim,-10}" +
+                    $"Soyisim : {this.ogr_soyisim,-10}" +
+                    $"Numara : {this.ogr_no,-10}" +
+                    string.Format("{0,5}", this.ogr_cinsiyet == true ? "Bay" : "Bayan");
             }
 
         }
