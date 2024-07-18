@@ -12,21 +12,70 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            //Dizilerin farklı yollarla oluşturulması ve gösterimi
+            //Hashtable
+            //Declaration
+            var sehirler = new Hashtable();
 
-            int[] sayilar = new int[] { 1, 2, 3, 4, 5, };
-            var numbers = Array.CreateInstance(typeof(int), 5);
-            numbers.SetValue(5, 0);
-            numbers.SetValue(3, 1);
-            numbers.SetValue(8, 2);
-            numbers.SetValue(6, 3);
-            numbers.SetValue(12, 4);
+            //Add
+            sehirler.Add(17, "Çanakkale");
+            sehirler.Add(34, "Istanbul");
+            sehirler.Add(35, "Izmir");
+            sehirler.Add(23, "Elazığ");
 
-            var sayilar2 = new ArrayList(sayilar);
-
-            for(int i=0; i<numbers.Length; i++)
+            //Travel
+            foreach (DictionaryEntry item in sehirler)
             {
-                Console.WriteLine($"sayilar[{i}] = {sayilar[i]} - numbers[{i}] = {numbers.GetValue(i)} - sayilar2[{i}] = {sayilar2[i]}");
+                Console.WriteLine(item.Key + " - " + item.Value);
+            }
+
+            //Keys
+            var anahtarlar = sehirler;
+            Console.WriteLine("\nAnahtarlar: ");
+            foreach (DictionaryEntry item in sehirler)
+            {
+                Console.WriteLine(item.Key);
+            }
+
+            //Values
+
+            Console.WriteLine("\nDeğerler: ");
+
+            /*
+            
+            Hashtable degerler = sehirler;
+            foreach(DictionaryEntry item in degerler)            ===> Bu, bir yol. Bütün hash table'ı alıp foreach'de values seçmek.
+            {
+                Console.WriteLine(item.Value);
+            }
+            
+            */
+
+            /*
+             
+            var degerler = sehirler.Values;
+            foreach (var item in degerler)                       ===> Bu, bir yol. Bütün var sayesinde Hashtable'ın sadece values kısmını almak. 
+            {                                                   *Bir hashtable'a başka bir Hashtable'ın sadece değerlerini atamazsınç Çünkü Key değerleri de olmak zorunda.
+                Console.WriteLine(item);
+            }
+
+            */
+
+            ICollection degerler = sehirler.Values;
+            foreach(var item in degerler)
+            {
+                Console.WriteLine(item);                        //Bu da olur. Neden ICollection interface'ini data type olarak kullandığımızı ileride çok daha iyi anlayacağız.
+            }                                                   //Ama sanırım List<T>, Hashtable, ArrayList vs.. gibi Collection'ları aynı arayüzle yönetebilmemize yarıyor. 
+
+            //Reach an element
+            Console.WriteLine("\nElemana Erişme :");
+            Console.WriteLine(sehirler[34]);
+
+            //Delete an element
+            Console.WriteLine("\nEleman Silme :");
+            sehirler.Remove(23);
+            foreach(DictionaryEntry item in sehirler)
+            {
+                Console.WriteLine(item.Key + " - " + item.Value);
             }
 
             Console.ReadKey();
