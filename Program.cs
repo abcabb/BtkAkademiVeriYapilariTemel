@@ -9,20 +9,50 @@ namespace BtkAkademiVeriYapilariTemel
 {
     internal partial class Program
     {
+        public struct Nokta
+        {
+            private int x { get; set; }
+            private int y {  get; set; }
+
+            public Nokta(int x, int y)
+            {
+                this.x = x; 
+                this.y = y;
+            }
+
+            public override string ToString()
+            {
+                return $"{this.x},{this.y}";
+            }
+
+            public void setOrigin()
+            {
+                this.x = 0;
+                this.y = 0;
+            }
+
+            public void degistir()
+            {
+                int gecici = x;
+                x = y;
+                y = gecici;
+            }
+        }
+
         static void Main(string[] args)
         {
-            List<Ogrenci> ogrenciListesi = new List<Ogrenci>()
-            {
-                new Ogrenci(220403825, "Semi", "Şen", true),
-                new Ogrenci(220403465, "Ali", "Demir", true),
-                new Ogrenci(220403754, "Yağmur", "Çelik", false),
-                new Ogrenci(220403147, "Ayşe", "Kırmızı", false)
-            };
+            //struct' ların Değer Tipli Çalıştığının Gösterimi
 
-            foreach (Ogrenci o in ogrenciListesi)
-            {
-                Console.WriteLine(o.ToString());
-            }   
+            Nokta n1 = new Nokta(3,4);
+            Console.WriteLine($"n1:       {n1}");
+            n1.degistir();
+            Console.WriteLine($"n1:       {n1}");
+
+            Nokta n2 = n1;
+            Console.WriteLine($"n2:       {n2}");
+            n2.degistir();
+            Console.WriteLine($"n2:       {n2}");
+            Console.WriteLine($"n1:       {n1}");
 
             Console.ReadKey();
         }
