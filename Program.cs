@@ -9,50 +9,20 @@ namespace BtkAkademiVeriYapilariTemel
 {
     internal partial class Program
     {
-        public struct Nokta
-        {
-            private int x { get; set; }
-            private int y {  get; set; }
-
-            public Nokta(int x, int y)
-            {
-                this.x = x; 
-                this.y = y;
-            }
-
-            public override string ToString()
-            {
-                return $"{this.x},{this.y}";
-            }
-
-            public void setOrigin()
-            {
-                this.x = 0;
-                this.y = 0;
-            }
-
-            public void degistir()
-            {
-                int gecici = x;
-                x = y;
-                y = gecici;
-            }
-        }
-
         static void Main(string[] args)
         {
-            //struct' ların Değer Tipli Çalıştığının Gösterimi
+            OgretimElemani ogr_el1 = new OgretimElemani(100, "Samet", "Altıtaş", true);
+            Console.WriteLine($"Öğretim Elemanı 1 :\n{ogr_el1}");
 
-            Nokta n1 = new Nokta(3,4);
-            Console.WriteLine($"n1:       {n1}");
-            n1.degistir();
-            Console.WriteLine($"n1:       {n1}");
+            OgretimElemani ogr_el2 = ogr_el1;
+            Console.WriteLine($"Öğretim Elemanı 2 :\n{ogr_el2}");
+            ogr_el2.Degerleri_Sil();
+            Console.WriteLine("Öğretim Elemanı 2 sıfırlandı.");
+            Console.WriteLine($"Öğretim Elemanı 1 :\n{ogr_el1}");
+            Console.WriteLine($"Öğretim Elemanı 2 :\n{ogr_el2}");
 
-            Nokta n2 = n1;
-            Console.WriteLine($"n2:       {n2}");
-            n2.degistir();
-            Console.WriteLine($"n2:       {n2}");
-            Console.WriteLine($"n1:       {n1}");
+            //Sadece Öğretim Elemanı 2'yi sıfırlamış olmama rağmen Öğretim Elemanı 1'in de bilgileri sıfırlandı.
+            //Bu da Class datatype'ların Adres yani Referans Tipli olduğunu gösterir.
 
             Console.ReadKey();
         }
