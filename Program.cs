@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Security.Cryptography;
@@ -16,38 +17,45 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            var sehirler = new LinkedList<string>();
-            sehirler.AddFirst("Ordu");
-            sehirler.AddFirst("Trabzon");
-            sehirler.AddLast("Istanbul");
-            
-            sehirler.AddAfter(sehirler.Find("Ordu"), "Samsun");
-            sehirler.AddBefore(sehirler.First.Next.Next, "Giresun");
-            sehirler.AddAfter(sehirler.Last.Previous, "Sinop");
-            sehirler.AddAfter(sehirler.Find("Sinop"), "Zonguldak");
-                       
-            foreach(string s in sehirler)
+            //Declaration
+            var sehirKodlari = new Dictionary<int, string>()
             {
-                Console.WriteLine(s);
+                {312, "Ankara"},
+                {212, "İstanbul"},
+                {412, "Malatya"}
+            };
+
+            //Add
+            sehirKodlari.Add(322, "Osmaniye");
+            sehirKodlari.Add(755, "Hakkari");
+
+            //Access
+            Console.WriteLine("Erişme : " + sehirKodlari[212]);
+
+            //ContainsKey
+
+            if (!sehirKodlari.ContainsKey(622))
+            {
+                Console.WriteLine("\aKayseri'nin kodu sözlükte bulunmuyor.");
+                sehirKodlari.Add(622, "Kayseri");
+                Console.WriteLine("Yeni Kod Kaydedildi!");
             }
 
-            Console.WriteLine("\nGİDİŞ GÜZERGAHI :\n");
+            //ContainsValue
 
-            var gecici = sehirler.First;
-            while (gecici != null)
+            if (!sehirKodlari.ContainsValue("Aydın"))
             {
-                Console.WriteLine(gecici.Value);
-                gecici = gecici.Next;
+                Console.WriteLine("\aAydın'ın kodu sözlükte bulunmuyor.");
+                sehirKodlari.Add(144, "Aydın");
+                Console.WriteLine("Yeni Kod Kaydedildi!");
             }
 
-            Console.WriteLine("\nDÖNÜŞ GÜZERGAHI :\n");
-
-            var gecici2 = sehirler.Last;
-            while (gecici2 != null)
+            var kodlar = sehirKodlari;
+            foreach(var k in kodlar)
             {
-                Console.WriteLine(gecici2.Value);
-                gecici2 = gecici2.Previous;
+                Console.WriteLine(k);
             }
+
 
             Console.ReadKey();
             
