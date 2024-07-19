@@ -17,48 +17,18 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            //Declaration
-            var sehirKodlari = new Dictionary<int, string>()
+            var personelListesi = new Dictionary<int, Personel>()
             {
-                {312, "Ankara"},
-                {212, "İstanbul"},
-                {412, "Malatya"}
-            };
+                {100, new Personel("Enes", "Saygılı", 5500)},
+                {101, new Personel("Semi", "Şen", 5400)}
+            };    
 
-            //Add
-            sehirKodlari.Add(322, "Osmaniye");
-            sehirKodlari.Add(755, "Hakkari");
-
-            //Access
-            Console.WriteLine("Erişme : " + sehirKodlari[212]);
-
-            //ContainsKey
-
-            if (!sehirKodlari.ContainsKey(622))
+            foreach(var p in personelListesi)
             {
-                Console.WriteLine("\aKayseri'nin kodu sözlükte bulunmuyor.");
-                sehirKodlari.Add(622, "Kayseri");
-                Console.WriteLine("Yeni Kod Kaydedildi!");
+                Console.WriteLine(p);
             }
-
-            //ContainsValue
-
-            if (!sehirKodlari.ContainsValue("Aydın"))
-            {
-                Console.WriteLine("\aAydın'ın kodu sözlükte bulunmuyor.");
-                sehirKodlari.Add(144, "Aydın");
-                Console.WriteLine("Yeni Kod Kaydedildi!");
-            }
-
-            var kodlar = sehirKodlari;
-            foreach(var k in kodlar)
-            {
-                Console.WriteLine(k);
-            }
-
 
             Console.ReadKey();
-            
         }
     }
 }

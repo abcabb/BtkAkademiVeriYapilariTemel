@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Ogrenci.cs" />
     <Compile Include="OgretimElemani.cs" />
+    <Compile Include="Personel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
