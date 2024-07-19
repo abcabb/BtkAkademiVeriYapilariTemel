@@ -17,16 +17,38 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            var personelListesi = new Dictionary<int, Personel>()
+            var kitapIndex = new SortedDictionary<string, List<int>>()
             {
-                {100, new Personel("Enes", "Saygılı", 5500)},
-                {101, new Personel("Semi", "Şen", 5400)}
-            };    
+                {"HTML" ,new List<int>(){ 6, 8, 10} },
+                {"JQuery", new List<int>() { 50, 60} },
+                {"SQL", new List<int>(){30, 35, 45} },
+                {"CSS", new List<int>(){20, 25 } }
+            };
 
-            foreach(var p in personelListesi)
+            kitapIndex.Add("ASP.NET", new List<int>() { 100, 101, 102 });
+            kitapIndex.Add("C#", new List<int>() { 1, 2, 3 });
+
+            //Anahtarları Görme
+            Console.WriteLine("ANAHTARLAR :");
+            foreach(var k in kitapIndex)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(k.Key);
             }
+
+            //SortedDictionary Instance'larını görme
+            Console.WriteLine();
+            Console.WriteLine("Anahtarlar Ve Sayfaları :");
+
+            foreach(var k in kitapIndex)
+            {
+                Console.WriteLine(k.Key);
+                foreach(int l in k.Value)
+                {
+                    Console.WriteLine($"{" > ",10}" + l);
+                }
+            }
+
+            //SortedDictionary Sayesinde Keyler otomatik olarak sıralandı.
 
             Console.ReadKey();
         }
