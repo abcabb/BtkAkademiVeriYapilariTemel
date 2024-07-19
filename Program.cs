@@ -17,32 +17,25 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            var liste = new SortedSet<string>() 
+            var list = new List<int>();
+            var r = new Random();
+
+            for (int i = 0; i<1000; i++)
             {
-                {"Mehmet"}
-            };
-
-            if (liste.Add("Ahmet")) { Console.WriteLine($"{liste.First()} eklendi."); }
-            else { Console.WriteLine("\aEkleme başarısız."); }
-
-            Console.WriteLine(liste.Add("Mehmet") == true ? "Mehmet eklendi" : "\aEkleme başarısız.");
-
-            liste.Add("Hamit");
-            liste.Add("Şemsi");
-            liste.Add("Rümeysa");
-            liste.Add("Şevval");
-
-            liste.Remove("Rümeysa");
-            liste.RemoveWhere(deger => deger.Contains('i')); //Fonksiyonun içerisindeki ifadede deger diye bir string türünde değişken üretmiş olduk aslında.
-
-            Console.WriteLine("\nİSİM LİSTESİ\n");
-
-            foreach(string l in liste)
-            {
-                Console.WriteLine(l);
+                list.Add(r.Next(0, 20));
+                Console.Write($"{list[i]}  ");
             }
 
-            Console.WriteLine("Set içerisindeki eleman sayısı : {0}", liste.Count);
+            var set = new SortedSet<int>(list);
+
+            Console.WriteLine("\n\nUnique(Benzersiz) Elemanlar :\n");
+
+            foreach(int i in set)
+            {
+                Console.Write("{0} ", i);
+            }
+
+            Console.WriteLine($"\n{set.Count} tane benzersiz eleman vardır");
 
             Console.ReadKey();
         }
