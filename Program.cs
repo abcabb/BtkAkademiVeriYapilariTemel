@@ -13,68 +13,20 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            //Sorted List
-
-            var liste = new SortedList()
+            var kitapIcerigi = new SortedList()
             {
-                {1, "Bir"},
-                {2, "İki"},
-                {7, "Yedi"},
-                {3, "Üç"},
-                {6, "Altı"},
-                {9, "Dokuz"},
+                {1, "Giriş"},
+                {25, "Değişkenler"},
+                {40, "Operatörler"},
+                {50, "Döngüler"},
+                {80, "Fonksiyonlar"}
             };
-            
-            liste.Add(4, "Dört");
-
-            foreach(DictionaryEntry item in liste)
+            Console.WriteLine("KİTAP İÇERİĞİ\n" + new string('-',50));
+            Console.WriteLine($"{"Konu Başlığı", -20}{"Sayfa Sayısı", -5}");
+            foreach(DictionaryEntry listeElemanı in kitapIcerigi)
             {
-                Console.WriteLine("{0} :       {1}", item.Key, item.Value);
+                Console.WriteLine($"{listeElemanı.Value, -20}{listeElemanı.Key,-5}");
             }
-            //Elemanların Sıralanmış olarak listeye eklendiğini görüyoruz.
-
-            Console.WriteLine("Listedeki eleman sayısı :    {0}",liste.Count);
-            Console.WriteLine("Listenin kapasitesi :       {0}", liste.Capacity);
-            liste.TrimToSize();
-            Console.WriteLine("Listenin kapasitesi :     {0}", liste.Capacity);
-
-            //Key ile Value değerine erişme
-            Console.WriteLine(liste[3]);
-
-            //Index ile Value değerine erişme
-            Console.WriteLine(liste.GetByIndex(0));
-
-            //Index ile Key değerine erişme
-            Console.WriteLine(liste.GetKey(0));
-
-            //Liste sonundaki elemanın Value değeri
-            Console.WriteLine(liste.GetByIndex(liste.Count-1));
-
-            //Liste sonundaki elemanın anahtarını almak
-            Console.WriteLine(liste.GetKey(liste.Count-1));
-
-            //Listenin Anahtarlarını gösterme
-            Console.WriteLine("ANAHTARLAR");
-            var anahtarlar = liste.Keys;
-            foreach(var a in anahtarlar)
-            {
-                Console.WriteLine(a);
-            }
-
-            //Listenin Değerlerini gösterme
-            Console.WriteLine("DEĞERLER");
-            var degerler = liste.Values;
-            foreach(var d in degerler)
-            {
-                Console.WriteLine(d);
-            }
-
-            if (liste.ContainsKey(3))
-            {
-                liste[3] = "Three";
-            }
-
-            foreach(DictionaryEntry i in liste) {  Console.WriteLine(i.Key + " - " + i.Value); }
 
             Console.ReadKey();
         }
