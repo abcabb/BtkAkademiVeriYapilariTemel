@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +16,24 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            var karakterStack = new Stack<char>();
+            Console.WriteLine("Lütfen bir sayı giriniz : ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
 
-            for(int i = 65; i<=90; i++)
-            {
-                karakterStack.Push((char)i);
-                Console.WriteLine($"{karakterStack.Peek()}, Yığına Eklendi.");
-                Console.WriteLine("Yığındaki Eleman Sayısı = {0}",karakterStack.Count);
-            }
-            Console.WriteLine("Press a button to clear the Stack :");
-            Console.ReadKey();
+            var stack1 = new Stack<int>();
 
-            while (karakterStack.Count > 0)
+            while (sayi > 0)
             {
-                Console.WriteLine($"{karakterStack.Pop()}, Yığından Çıkarıldı.");
-                Console.WriteLine("Yığındaki Eleman Sayısı = {0}", karakterStack.Count);
+                stack1.Push(sayi % 10);
+                sayi /= 10;
             }
 
+            int i = stack1.Count-1;
+
+            foreach (int x in stack1)
+            {
+                Console.WriteLine($"{x} x {Math.Pow(10, i)} = {x*Math.Pow(10,i)}");
+                i--;
+            }
             Console.ReadKey();
         }
 
