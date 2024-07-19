@@ -16,44 +16,23 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Lütfen bir sayı giriniz : ");
-            int sayi = Convert.ToInt32(Console.ReadLine());
+            //Queue Declaration
+            var karakterKuyrugu = new Queue<char>();
 
-            var stack1 = new Stack<int>();
+            //Add, Delete döngülü örnek
 
-            while (sayi > 0)
+            for (int i = 65; i <= 90; i++)
             {
-                stack1.Push(sayi % 10);
-                sayi /= 10;
+                karakterKuyrugu.Enqueue((char)i);  //Add
             }
 
-            int i = stack1.Count-1;
-
-            foreach (int x in stack1)
+            while (karakterKuyrugu.Count > 0)
             {
-                Console.WriteLine($"{x} x {Math.Pow(10, i)} = {x*Math.Pow(10,i)}");
-                i--;
+                Console.WriteLine($"Kuyruğun Başındaki Eleman : {karakterKuyrugu.Peek(),-10}"); // Peek
+                Console.WriteLine($"Kuyruktan Çıkarılan Eleman : {karakterKuyrugu.Dequeue(),-10}"); // Delete
             }
+
             Console.ReadKey();
-        }
-
-        private static void StackOrnegi()
-        {
-            //Stack Declaration
-            var stack1 = new Stack<char>();
-
-            //Add
-            stack1.Push('A');
-            Console.WriteLine(stack1.Peek());
-            stack1.Push('B');
-            Console.WriteLine(stack1.Peek());
-            stack1.Push('C');
-            Console.WriteLine(stack1.Peek());
-
-            //Delete
-            Console.WriteLine("Yığından çıkartılan eleman : {0}", stack1.Pop());
-            Console.WriteLine("Yığından çıkartılan eleman : {0}", stack1.Pop());
-            Console.WriteLine("Yığından çıkartılan eleman : {0}", stack1.Pop());
         }
     }
 }
