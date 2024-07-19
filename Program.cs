@@ -17,38 +17,32 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            var kitapIndex = new SortedDictionary<string, List<int>>()
+            var liste = new SortedSet<string>() 
             {
-                {"HTML" ,new List<int>(){ 6, 8, 10} },
-                {"JQuery", new List<int>() { 50, 60} },
-                {"SQL", new List<int>(){30, 35, 45} },
-                {"CSS", new List<int>(){20, 25 } }
+                {"Mehmet"}
             };
 
-            kitapIndex.Add("ASP.NET", new List<int>() { 100, 101, 102 });
-            kitapIndex.Add("C#", new List<int>() { 1, 2, 3 });
+            if (liste.Add("Ahmet")) { Console.WriteLine($"{liste.First()} eklendi."); }
+            else { Console.WriteLine("\aEkleme başarısız."); }
 
-            //Anahtarları Görme
-            Console.WriteLine("ANAHTARLAR :");
-            foreach(var k in kitapIndex)
+            Console.WriteLine(liste.Add("Mehmet") == true ? "Mehmet eklendi" : "\aEkleme başarısız.");
+
+            liste.Add("Hamit");
+            liste.Add("Şemsi");
+            liste.Add("Rümeysa");
+            liste.Add("Şevval");
+
+            liste.Remove("Rümeysa");
+            liste.RemoveWhere(deger => deger.Contains('i')); //Fonksiyonun içerisindeki ifadede deger diye bir string türünde değişken üretmiş olduk aslında.
+
+            Console.WriteLine("\nİSİM LİSTESİ\n");
+
+            foreach(string l in liste)
             {
-                Console.WriteLine(k.Key);
+                Console.WriteLine(l);
             }
 
-            //SortedDictionary Instance'larını görme
-            Console.WriteLine();
-            Console.WriteLine("Anahtarlar Ve Sayfaları :");
-
-            foreach(var k in kitapIndex)
-            {
-                Console.WriteLine(k.Key);
-                foreach(int l in k.Value)
-                {
-                    Console.WriteLine($"{" > ",10}" + l);
-                }
-            }
-
-            //SortedDictionary Sayesinde Keyler otomatik olarak sıralandı.
+            Console.WriteLine("Set içerisindeki eleman sayısı : {0}", liste.Count);
 
             Console.ReadKey();
         }
