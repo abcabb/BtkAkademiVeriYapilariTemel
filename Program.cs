@@ -16,23 +16,42 @@ namespace BtkAkademiVeriYapilariTemel
     {
         static void Main(string[] args)
         {
-            //Queue Declaration
-            var karakterKuyrugu = new Queue<char>();
-
-            //Add, Delete döngülü örnek
-
-            for (int i = 65; i <= 90; i++)
+            var sesliHarfler = new List<char>()
             {
-                karakterKuyrugu.Enqueue((char)i);  //Add
+                {'e'}, {'u'}, {'ı'}, {'o'}, {'ü'}, {'a'}, {'i'}, {'ö'}
+            };
+
+            ConsoleKeyInfo secim;
+            var queue1 = new Queue<char>();
+
+            foreach (char c in sesliHarfler)
+            {
+                Console.WriteLine($"{c} kuyruğa eklensin mi? [e/h]");
+                secim = Console.ReadKey();
+                if (secim.Key == ConsoleKey.E)
+                {
+                    queue1.Enqueue(c);
+                    Console.WriteLine($"\n{c} kuyruğa eklendi.");
+                    Console.WriteLine($"Kuyruktaki Eleman Sayısı : {queue1.Count}");
+                }
             }
 
-            while (karakterKuyrugu.Count > 0)
-            {
-                Console.WriteLine($"Kuyruğun Başındaki Eleman : {karakterKuyrugu.Peek(),-10}"); // Peek
-                Console.WriteLine($"Kuyruktan Çıkarılan Eleman : {karakterKuyrugu.Dequeue(),-10}"); // Delete
-            }
+            Console.WriteLine();
+            Console.WriteLine("Kuyruktaki elemanları silme işlemi için ESC tuşuna basınız");
+            Console.WriteLine();
+            secim = Console.ReadKey();
 
-            Console.ReadKey();
+            if (secim.Key == ConsoleKey.Escape)
+            {
+                while (queue1.Count > 0)
+                {
+                    Console.WriteLine($"{queue1.Peek()}, Kuyruktan Çıkartılacak.");
+                    Console.WriteLine($"{queue1.Dequeue()}, Kuyruktan Çıkartıldı.");
+                    Console.WriteLine($"Kuyruktaki Eleman Sayısı : {queue1.Count}");
+                }
+
+                Console.ReadKey();
+            }
         }
     }
 }
